@@ -15,6 +15,7 @@ export async function getRecipes(params?: {
   if (params?.search) query.set('search', params.search);
   if (params?.category) query.set('category', params.category);
   if (params?.area) query.set('area', params.area);
+  console.log('Fetching from', `${API_URL}/recipes?${query.toString()}`);
 
   const res = await fetch(`${API_URL}/recipes?${query.toString()}`);
   if (!res.ok) throw new Error('Failed to fetch recipes');
