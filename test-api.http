@@ -1,0 +1,22 @@
+### Получить все рецепты (первая страница)
+GET http://localhost:3001/api/recipes
+
+### Получить рецепты с поиском и пагинацией
+GET http://localhost:3001/api/recipes?search=chicken&page=1&limit=5
+
+### Получить один рецепт по ID
+# ПРИМЕЧАНИЕ: Сначала выполните первый запрос, скопируйте `id` одного из рецептов
+# и вставьте его сюда вместо 'your_recipe_id'.
+GET http://localhost:3001/api/recipes/53086
+
+### Получить все категории
+GET http://localhost:3001/api/categories
+
+### Получить все кухни мира (areas)
+GET http://localhost:3001/api/areas
+
+### Получить случайный рецепт
+GET http://localhost:3001/api/recipes/random
+
+### Получить избранные рецепты
+GET http://localhost:3001/api/recipes/starred
