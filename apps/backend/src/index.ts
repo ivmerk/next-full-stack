@@ -6,8 +6,23 @@ import { getCategories, getAreas, getRandomRecipe } from './services/mealDbServi
 
 const app = express();
 const port = process.env.PORT || 3001;
+const allowedOrigins = [
+  'https://next-full-stack-front.onrender.com', // Ваш задеплоенный фронтенд
+  'http://localhost:3000' // Для локальной разработки
+];
 
-app.use(cors());
+const corsOptions: cors.CorsOptions = {
+  origin: (origin, callback) => {
+    // Разрешаем запросы без origin (например, от мобильных приложений или Postman)
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Get random recipe 
