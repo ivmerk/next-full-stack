@@ -3,10 +3,17 @@ import { RecipeForm } from '../../../components/RecipeForm';
 import { PageHeader } from '../../../components/PageHeader';
 import { handleSubmit } from './action';
 export default async function NewRecipePage() {
-    const [categories, areas] = await Promise.all([
+  let categories = [];
+  let areas = [];
+  try {
+    [categories, areas] = await Promise.all([
       getCategories(),
       getAreas(),
     ]);
+  } catch (err) {
+    console.error('Failed to fetch categories or areas', err);
+    // optionally: show error UI or fallback to empty list
+  }
   
 
   return (
