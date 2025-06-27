@@ -28,3 +28,5 @@ export default async function NewRecipePage() {
     </div>
   );
 } 
+
+export const dynamic = 'force-dynamic';
